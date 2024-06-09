@@ -1,0 +1,12 @@
+.table-dark {
+    background-color: #242526;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #343536;
+  }
+  
+  .table img {
+    border-radius: 50%;
+  }
+  
