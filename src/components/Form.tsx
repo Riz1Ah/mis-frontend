@@ -2,6 +2,10 @@ import { FieldValues, useForm } from 'react-hook-form';
 
 import './Login.css';
 import image from '../assets/5243321.jpg';
+import useLogin from '../hooks/useLogin';
+import { useState } from 'react';
+import loginService, { LoginResponse } from '../services/login-service';
+import { CanceledError } from '../services/api-client';
 
 interface LoginFormData {
     email: string;
@@ -10,8 +14,34 @@ interface LoginFormData {
 
 function Form() {
     const {register, handleSubmit, formState:{ errors , isValid}} = useForm<LoginFormData>()
+    // const [req, setReq] = useState<LoginFormData>({email:'',password:''})
+    const [sessionId, setSessionId] = useState<LoginResponse[]>([])
+    const [error, setError] = useState("");
+    
+    // const response = (req.email && req.password) && useLogin({username:req.email,password:req.password})
+    // console.log(response)
     const onSubmit = (data: FieldValues) => {
         console.log(data)
+        // setReq({email:data.email, password:data.password})
+        const headers = {
+          'Authorization': 'Basic ' + btoa(data.email + ':' + data.password)
+      }
+      const { request, cancel } = loginService.postOne<LoginResponse>(
+        headers,
+        {}
+    );
+    request
+      .then((res) => {
+        setSessionId(res.data)
+        // setUsers(res.data);
+        // setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError(err.message);
+        // setIsLoading(false);
+      });
+      return cancel;
     }
 
   return (
