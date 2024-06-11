@@ -1,18 +1,10 @@
 import apiClient from "./api-client";
+import httpService from "./http-service";
 
 export interface Users {
     id: number;
     name:string;
   }
 
-class UserService {
-    getAllUsers() {
-        const controller = new AbortController()
-        const request = apiClient.get<Users[]>('/users', {signal: controller.signal})
-        
-        return {request, cancel: () => controller.abort()}
-    }
 
-}
-
-export default new UserService()
+export default httpService('/users')
