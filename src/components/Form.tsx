@@ -2,10 +2,11 @@ import { FieldValues, useForm } from 'react-hook-form';
 
 import './Login.css';
 import image from '../assets/5243321.jpg';
-import useLogin from '../hooks/useLogin';
-import { useState } from 'react';
+// import useLogin from '../hooks/useLogin';
+import { useContext, useState } from 'react';
 import loginService, { LoginResponse } from '../services/login-service';
 import { CanceledError } from '../services/api-client';
+import AuthContext from '../context/AuthProvider';
 
 interface LoginFormData {
     email: string;
@@ -13,9 +14,11 @@ interface LoginFormData {
 }
 
 function Form() {
+    const {setAuth} = useContext(AuthContext)
+
     const {register, handleSubmit, formState:{ errors , isValid}} = useForm<LoginFormData>()
     // const [req, setReq] = useState<LoginFormData>({email:'',password:''})
-    const [sessionId, setSessionId] = useState<LoginResponse[]>([])
+    const [sessionId, setSessionId] = useState<LoginResponse>()
     const [error, setError] = useState("");
     
     // const response = (req.email && req.password) && useLogin({username:req.email,password:req.password})
@@ -33,6 +36,7 @@ function Form() {
     request
       .then((res) => {
         setSessionId(res.data)
+        setAuth(res.data)
         // setUsers(res.data);
         // setIsLoading(false);
       })

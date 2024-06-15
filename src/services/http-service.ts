@@ -24,7 +24,7 @@ class HttpService {
 
     postOne<T>(headers:any, body:any){
         const controller = new AbortController()
-        const request = apiClient.post<T[]>(this.endpoint,body, {headers: headers, signal: controller.signal})
+        const request = apiClient.post<T>(this.endpoint,body, {headers: headers, signal: controller.signal})
         
         return {request, cancel: () => controller.abort()}
     }
