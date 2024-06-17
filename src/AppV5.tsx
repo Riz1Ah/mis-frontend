@@ -1,14 +1,13 @@
-import React from 'react';
-import './AppV4.css';
-import Navbar from './components/NavBar';
-import Downloads from './components/Downloads';
+import './AppV5.css';
+import Navbar from './components/NavBarV2';
+import TokenTable from './components/TokenTable';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <div className="container mt-5">
-        <Downloads />
+        <TokenTable />
       </div>
     </div>
   );

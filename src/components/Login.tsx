@@ -36,6 +36,7 @@ function Form() {
     // setReq({email:data.email, password:data.password})
     const headers = {
       Authorization: "Basic " + btoa(data.email + ":" + data.password),
+      withCredentials:true
     };
     const { request, cancel } = loginService.postOne<LoginResponse>(
       headers,
@@ -45,7 +46,7 @@ function Form() {
       .then((res) => {
         // setSessionId(res.data);
         setAuth(res.data);
-        navigate('/portal', {replace:true})
+        navigate(from, {replace:true})
         // setUsers(res.data);
         // setIsLoading(false);
       })

@@ -1,0 +1,67 @@
+.dashboard {
+  height: 100vh;
+  background-color: #F9F9F9;
+}
+
+.sidebar {
+  border-right: 1px solid #ddd;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar nav ul {
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+  color: #000;
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(23,130,196);
+  height: 9vh;
+  border-radius: 3px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.requirements-status,
+.existing-queries {
+  margin-top: 20px;
+}
+
+.existing-queries .bi-calendar {
+  font-size: 1.2rem;
+}
+
+.existing-queries table img {
+  border-radius: 50%;
+}
+
+.cursive-font {
+  font-family: 'Pacifico', cursive;
+  font-weight:900;
+}
+.sidebar-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1rem;
+}

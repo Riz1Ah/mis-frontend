@@ -8,7 +8,7 @@ export interface BasicAuth {
 
 export interface LoginResponse {
     message: string;
-    sessionId: number
+    session_id: number
 }
 
 

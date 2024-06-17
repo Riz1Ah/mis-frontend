@@ -6,21 +6,21 @@ interface Props {
 }
 
 type AuthType = {
-    auth:{};
+    auth:LoginResponse;
     setAuth:Dispatch<SetStateAction<LoginResponse>>
 }
 
-// const initialLoginResponse:LoginResponse = {
-//     message:'0',
-//     sessionId:0
-// } 
+const initializeAuth = {
+    message:'',
+    session_id:0
+}
 const AuthContext = createContext<AuthType>({
-    auth: {},
+    auth: initializeAuth,
     setAuth: () => {}}
 );
 
 export const AuthProvider = ({children} : Props) => {
-    const [auth, setAuth] = useState({})
+    const [auth, setAuth] = useState(initializeAuth)
 
     return (
         <AuthContext.Provider value={{auth, setAuth}}>
